@@ -12,6 +12,18 @@ JAVA_DIR="$BASE_DIR"/src/java
 SFNTLY_COMMIT='0e3a4a3c8e1623749a7d90cbfa5d431ac15c44ef'
 WOFF2_COMMIT='5bbcf1f8ad44c07e797a088fec1dd2317611089a'
 
+UNAME="`uname -s`"
+
+case $UNAME in
+    FreeBSD)
+        MAKE="gmake"
+        ;;
+    Linux) ;&
+    *)
+        MAKE="make"
+        ;;
+esac
+
 print_ansi_code() {
   printf '\033[%sm' "$1"
 }
@@ -95,7 +107,7 @@ main() {
   require_command 'javac' &&
   require_command 'mvn' &&
   require_command 'python3' &&
-  require_command 'make' &&
+  require_command "$MAKE" &&
   require_command 'fontforge' 'FontForge' &&
   mkdir -p "$VENDOR_DIR" &&
   fetch_sfntly &&
