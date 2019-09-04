@@ -93,12 +93,12 @@ fetch_woff2() {
 
 build_woff2() {
   log 'Building woff2...'
-  make -C "$WOFF2_DIR"
+  $MAKE -C "$WOFF2_DIR"
 }
 
 build_java() {
   log 'Building java classes...'
-  make -C "$JAVA_DIR"
+  $MAKE -C "$JAVA_DIR"
 }
 
 main() {
