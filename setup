@@ -17,6 +17,7 @@ UNAME="`uname -s`"
 case $UNAME in
     FreeBSD)
         MAKE="gmake"
+        sudo pkg install $MAKE maven openjdk8 git python3 fontforge
         ;;
     Linux) ;&
     *)
